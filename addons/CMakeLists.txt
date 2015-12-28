@@ -45,7 +45,15 @@ endmacro(generate_ioinit)
 # flux should be commented out here until such time as they are in
 # a stable state.
 #add_subdirectory(AVCodec) # XXX: Broken
-add_subdirectory(AppleSensors)
+
+# AppleSensors is broken for me on OSX 10.11.2 
+# I am unable to link lioIoAppleSensors.dylib
+# There are a number of undefined symbols in unimotion.c.o:
+# _CFGetTypeID, _DFNumberGetTypeID, _CFNumberIsFloatType, 
+# _CFPreferencesCopyAppValue, _CFPreferencesGetAppIntegerValue,
+# _CFRelease, ___CFConstantStringClassReference
+#add_subdirectory(AppleSensors) #XXX: 
+
 add_subdirectory(AsyncRequest)
 #add_subdirectory(Beanstalk) # XXX: Broken, no YAML addon
 add_subdirectory(BigNum)
